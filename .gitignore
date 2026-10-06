@@ -1,0 +1,70 @@
+# =========================
+# OS & System Files
+# =========================
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+
+# =========================
+# IDEs & Editors
+# =========================
+.idea/
+.vscode/
+*.iws
+*.iml
+*.ipr
+.project
+.classpath
+.settings/
+.springBeans
+.sts4-cache
+
+# =========================
+# Frontend (Node / Vite)
+# =========================
+node_modules/
+dist/
+dist-ssr/
+.vite/
+.npm/
+.pnp
+.pnp.js
+
+# Frontend local envs & logs
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# =========================
+# Backend (Java / Spring Boot / Maven)
+# =========================
+target/
+build/
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+
+# Maven wrapper jar (optional, keep if you want to track it or ignore it)
+.mvn/wrapper/maven-wrapper.jar
+
+# Backend local configs & overrides
+application-local.yml
+application-dev.yml
+.env
