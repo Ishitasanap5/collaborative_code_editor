@@ -1,55 +1,33 @@
-version: '3.8'
-
 services:
-  db:
+  postgres:
     image: postgres:15-alpine
-    container_name: syncly-postgres
     environment:
-      POSTGRES_DB: collaborative_editor
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: rootpassword
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-    networks:
-      - syncly-net
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d collaborative_editor"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
 
   backend:
     build: ./backend
-    container_name: syncly-backend
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/collaborative_editor
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: rootpassword
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      JWT_SECRET: your_super_secret_jwt_key_here_at_least_256_bits_long
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+      - SPRING_DATASOURCE_USERNAME=${POSTGRES_USER}
+      - SPRING_DATASOURCE_PASSWORD=${POSTGRES_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
     ports:
       - "8080:8080"
     depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - syncly-net
+      - postgres
 
   frontend:
     build: ./frontend
-    container_name: syncly-frontend
     ports:
       - "3000:80"
     depends_on:
       - backend
-    networks:
-      - syncly-net
 
 volumes:
-  pg_data:
-
-networks:
-  syncly-net:
-    driver: bridge
+  postgres_data:
