@@ -59,7 +59,7 @@ export function connectToDocument(
   const token = localStorage.getItem("token");
 
   const stomp = new Client({
-    brokerURL: "ws://localhost:8080/ws",
+    brokerURL: "wss://collaborative-code-editor-3bfh.onrender.com/ws",
     reconnectDelay: 5000,
     connectHeaders: {
       Authorization: `Bearer ${token}`,

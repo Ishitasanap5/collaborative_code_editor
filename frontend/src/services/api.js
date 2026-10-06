@@ -1,5 +1,5 @@
 const API_BASE_URL =
-    import.meta.env.VITE_API_URL ?? "http://localhost:8080";
+    import.meta.env.VITE_API_URL ?? "https://collaborative-code-editor-3bfh.onrender.com";
 
 export const AUTH_EXPIRED_EVENT = "auth:expired";
 
