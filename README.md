@@ -198,7 +198,3 @@ The default `VITE_API_URL` points at a hosted instance on Render. Free instances
 - Move the WebSocket URL into an environment variable
 
 ---
-
-## License
-
-Add your license here.
