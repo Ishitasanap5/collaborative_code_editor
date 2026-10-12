@@ -4,6 +4,10 @@ A real-time collaborative code editor for the browser. Teams create rooms, invit
 
 This repository is the **frontend** (React + Vite). It talks to a separate backend over REST and WebSocket.
 
+**Live demo:** https://collaborative-code-editor-frontend-re9s.onrender.com
+
+> The demo runs on free hosting, so the first load can take up to a minute while the servers wake up. To try real-time sync, open the editor in two browser windows and type in both.
+
 ---
 
 ## Features
@@ -196,5 +200,3 @@ The default `VITE_API_URL` points at a hosted instance on Render. Free instances
 - Per-document chat
 - Offline persistence of pending operations
 - Move the WebSocket URL into an environment variable
-
----
